@@ -1,0 +1,9 @@
+---
+# tasks file for JetBrains-plugin-Rust
+
+- include_tasks: detect IDE.yml
+
+- name: Install Plugin for IDE
+  ansible.builtin.shell: "{{ ide }} installPlugins {{ plugin_ID }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.cache/JetBrains/{{ ide_dir }}/plugins/{{ creates_file }}"

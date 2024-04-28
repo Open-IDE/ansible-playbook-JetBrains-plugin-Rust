@@ -1,0 +1,36 @@
+---
+- name: Check for IntelliJ IDEA Ultimate
+  ansible.builtin.raw: which intellij-idea-ultimate
+  check_mode: false
+  changed_when: false
+  failed_when: false
+  register: which_idea_ultimate
+
+- name: Check for Clion
+  ansible.builtin.raw: which intellij-idea-ultimate
+  check_mode: false
+  changed_when: false
+  failed_when: false
+  register: which_clion
+
+- name: Check for PyCharm Community
+  ansible.builtin.raw: which pycharm-community
+  check_mode: false
+  changed_when: false
+  failed_when: false
+  register: which_pycharm_community
+
+# ----------------------------------
+- name: Set Intellij IDE
+  set_fact:
+    ide_bin: intellij-idea-ultimate
+    ide_dir: "IntelliJIdea*.*"
+    #"IntelliJIdea2024.1"
+  when: which_idea_ultimate.rc == 0
+
+
+# https://stackoverflow.com/questions/70808742/whats-the-best-way-in-ansible-to-check-if-a-command-is-available/77856750#77856750
+
+# - debug:
+#     msg: "echo {{ which_idea_ultimate.rc }}"
+#     msg: "echo {{ which_pycharm_community.rc }}"

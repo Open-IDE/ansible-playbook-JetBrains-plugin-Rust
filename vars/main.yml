@@ -1,0 +1,6 @@
+---
+# vars file for JetBrains-plugin-Rust
+
+plugin_ID: com.jetbrains.rust
+
+creates_file: intellij-rust.zip
